@@ -8,6 +8,7 @@ class PublishManager(models.Manager):
     def get_queryset(self):
         return super(PublishManager, self).get_queryset().filter(status='published')
 
+
 # Create your models here.
 class Post(models.Model):
     STATUS_CHOICES = (
@@ -33,4 +34,11 @@ class Post(models.Model):
     published = PublishManager()
 
     def get_absolute_url(self):
-        return reverse("blog:post_detail", args=[self.publish.year, self.publish.month, self.publish.day, self.slug])
+        return reverse("blogapp:post_detail", args=[self.publish.year,
+                                                 self.publish.month,
+                                                 self.publish.day,
+                                                 self.slug])
+
+
+posts = Post.objects.filter(status='published')
+p_posts = Post.published.all()

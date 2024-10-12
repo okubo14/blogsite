@@ -7,7 +7,7 @@ class PostlistView(ListView):
     queryset = Post.published.all()
     context_object_name = 'posts'
     paginate_by = 5
-    template_name = "blog/posts/list.html"
+    template_name = "blog/post/list.html"
 
 
 def post_detail(request, year, month, day, slug):
